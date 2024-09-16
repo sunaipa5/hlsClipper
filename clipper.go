@@ -62,7 +62,6 @@ func CreateClip(m3u8Content io.Reader, streamUrl, startTime, endTime, filename s
 				if scanner.Scan() {
 					currentSegment = scanner.Text()
 					segmentEndTime := currentStartTime + duration
-					fmt.Println(currentStartTime)
 
 					if isWithinRange(currentStartTime, segmentEndTime, startTimeFloat, endTimeFloat) {
 						if segmentCount == 0 {

@@ -28,8 +28,7 @@ func cutVideo(inputFile, startTime, endTime, outputFile string) error {
 		thumbCmd := exec.Command("ffmpeg", "-i", clipsPath+outputFile, "-ss", "00:00:02", "-vf", "scale=640:360", "-vframes", "1", clipsPath+outputFile+"_thumb.jpg")
 		err := thumbCmd.Run()
 		if err != nil {
-			fmt.Printf("Thumbnail oluşturulurken hata oluştu: %v\n", err)
-			return err
+			return fmt.Errorf("| error | ffmpeg | thumbnail could not be created | %v", err)
 		}
 	}
 
