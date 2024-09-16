@@ -115,7 +115,7 @@ func CreateClip(m3u8Content io.Reader, streamUrl, startTime, endTime, filename s
 	}
 
 	// Cut Video
-	if err := cutVideo(filename+"_temp.mp4", cutTimeStart, cutTimeEnd, filename+".mp4"); err != nil {
+	if err := cutVideo(filename+"_temp.mp4", cutTimeStart, cutTimeEnd, filename); err != nil {
 		return fmt.Errorf("| error | ffmpeg | video could not be cut: %v", err)
 	}
 
