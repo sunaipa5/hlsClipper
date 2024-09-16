@@ -3,6 +3,7 @@ package hlsClipper
 import (
 	"fmt"
 	"os/exec"
+	"path/filepath"
 )
 
 // FFmpeg - segment merger
@@ -25,7 +26,7 @@ func cutVideo(inputFile, startTime, endTime, outputFile string) error {
 
 	//Create thumbnail
 	if createThumbnail {
-		thumbCmd := exec.Command("ffmpeg", "-i", clipsPath+outputFile, "-ss", "00:00:02", "-vf", "scale=640:360", "-vframes", "1", clipsPath+outputFile+"_thumb.jpg")
+		thumbCmd := exec.Command("ffmpeg", "-i", clipsPath+outputFile, "-ss", "00:00:02", "-vf", "scale=640:360", "-vframes", "1", clipsPath+filepath.Base(outputFile)+"_thumb.jpg")
 		err := thumbCmd.Run()
 		if err != nil {
 			return fmt.Errorf("| error | ffmpeg | thumbnail could not be created | %v", err)
